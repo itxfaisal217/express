@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.products-data {
+  padding: 40px;
+}
+
+.products-data ul li {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 300px 300px 150px;
+  margin-bottom: 15px;
+}
+
+.products-data ul {
+  margin: 0;
+  padding: 0;
+}
+
+.grid-pd {
+  display: grid;
+  grid-template-columns: 300px 300px 150px;
+  gap: 30px;
+  padding: 0 40px;
+}
+
+.grid-pd input {padding: 1em 0;}
+
+.grid-pd {
+    margin: 15px 0px;
+}
