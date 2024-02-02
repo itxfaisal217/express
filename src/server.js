@@ -1,17 +1,19 @@
-const mongoose = require('mongoose');
 const express = require('express');
+const mongoose = require('mongoose');
 
 // Import Mongoose model(s)
 const UserModel = require('./models/userSchema');
 const ProductModel = require('./models/productSchema');
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 
 // MongoDB Atlas connection URL
-const mongoURI = process.env.MONGODB_URI;
+const mongoURI =
+  'mongodb+srv://faisalnazirpv11217:3YMtftZIT81OwxqQ@cluster0.locsgbv.mongodb.net/?retryWrites=true&w=majority';
 
 // Connect to MongoDB Atlas
 mongoose
@@ -19,8 +21,12 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => {
+  .then((data) => {
     console.log('Connected to MongoDB Atlas');
+    // Start the server after successfully connecting to the database
+    app.listen(PORT, () => {
+      console.log(`Server is listening on port ${PORT}`);
+    });
   })
   .catch((error) => {
     console.error('Error connecting to MongoDB Atlas:', error);
@@ -30,7 +36,7 @@ mongoose
 app.get('/api/users', async (req, res) => {
   try {
     const users = await UserModel.find();
-    res.status(200).json(users);
+    res.json(users);
   } catch (error) {
     console.error('Error fetching users:', error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -83,7 +89,7 @@ app.delete('/api/users/:userId', async (req, res) => {
 app.get('/api/products', async (req, res) => {
   try {
     const products = await ProductModel.find();
-    res.status(200).json(products);
+    res.json(products);
   } catch (error) {
     console.error('Error fetching products:', error);
     res.status(500).json({ error: 'Internal Server Error' });
