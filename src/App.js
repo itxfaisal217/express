@@ -58,6 +58,7 @@ function App() {
 
   return (
     <>
+    <SpeedInsights/>
     <div className='products-data'>
       <h1>Users</h1>
       <ul>
