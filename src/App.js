@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import axios from 'axios';
 import InsertData from './components/insert-data';
 
@@ -58,7 +57,6 @@ function App() {
 
   return (
     <>
-    <SpeedInsights/>
     <div className='products-data'>
       <h1>Users</h1>
       <ul>

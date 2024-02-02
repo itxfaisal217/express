@@ -7,7 +7,6 @@ const ProductModel = require('./models/productSchema');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-console.log(PORT)
 
 // Middleware to parse JSON bodies
 app.use(express.json());
